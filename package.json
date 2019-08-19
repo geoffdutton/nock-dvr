@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A modern network request recording for testing complex Web APIs.",
   "main": "index.js",
+  "engines": {
+    "node": ">=8"
+  },
   "scripts": {
     "lint": "standard --fix",
     "test": "rm -rf cassettes && mocha -r test/*"

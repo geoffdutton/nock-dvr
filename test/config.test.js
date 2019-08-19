@@ -1,6 +1,6 @@
 'use strict'
 
-const assert = require('assert').strict
+const assert = require('assert')
 const request = require('request')
 const vcr = require('../')
 const realVcr = require('nock-vcr-recorder')
@@ -11,11 +11,11 @@ const {
 
 describe('config', function () {
   it('changes realVcr\'s default config', function () {
-    assert.equal(realVcr._config.cassetteLibraryDir, 'cassettes')
+    assert.strictEqual(realVcr._config.cassetteLibraryDir, 'cassettes')
 
     vcr.config({ cassetteLibraryDir: 'fixtures' })
 
-    assert.equal(realVcr._config.cassetteLibraryDir, 'fixtures')
+    assert.strictEqual(realVcr._config.cassetteLibraryDir, 'fixtures')
   })
 
   after(function () {
@@ -34,7 +34,7 @@ vcr.describe('config - describe', {
   after(function () {
     const cassette = readCassette(slug('config - describe') + '/' + slug('excludes github'))
 
-    assert.equal(cassette.length, 0)
+    assert.strictEqual(cassette.length, 0)
   })
 })
 
@@ -48,6 +48,6 @@ describe('config - it', function () {
   after(function () {
     const cassette = readCassette(slug('config - it') + '/' + slug('excludes github'))
 
-    assert.equal(cassette.length, 0)
+    assert.strictEqual(cassette.length, 0)
   })
 })
