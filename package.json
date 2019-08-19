@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "lint": "standard --fix",
-    "test": "rm -rf cassettes && mocha test/*-test.js "
+    "test": "rm -rf cassettes && mocha -r test/*"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/poetic/nock-vcr-recorder-mocha.git"
+    "url": "https://github.com/geoffdutton/nock-dvr.git"
   },
   "keywords": [
     "dvr",
@@ -20,12 +20,12 @@
     "fixtures",
     "mocking"
   ],
-  "author": "Jake Craige <jake@poeticsystems.com>",
+  "author": "Geoff Dutton <g.dutton@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/poetic/nock-vcr-recorder-mocha/issues"
+    "url": "https://github.com/geoffdutton/nock-dvr/issues"
   },
-  "homepage": "https://github.com/poetic/nock-vcr-recorder-mocha",
+  "homepage": "https://github.com/geoffdutton/nock-dvr",
   "dependencies": {
     "nock-vcr-recorder": "^0.1.5",
     "slug": "^0.9.4"

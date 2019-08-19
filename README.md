@@ -1,16 +1,17 @@
-# Nock VCR Recorder Mocha 
-[![Build Status](https://travis-ci.com/geoffdutton/nock-vcr-recorder-mocha.svg?branch=master)](https://travis-ci.com/geoffdutton/nock-vcr-recorder-mocha)
+# Nock DVR Recorder 
+[![Build Status](https://travis-ci.com/geoffdutton/nock-vcr-recorder-mocha.svg?branch=master)](https://travis-ci.com/geoffdutton/nock-dvr)
 
 ## About
 
-A wrapper around
-[nock-vcr-recorder](https://github.com/poetic/nock-vcr-recorder) to simplify
+An updated, modern network recorder with the goal of being test framework agnostic. Inspired by:
+- [nock-vcr-recorder-mocha](https://github.com/poetic-labs/nock-vcr-recorder-mocha)
+- [nock-vcr-recorder](https://github.com/poetic/nock-vcr-recorder) - A wrapper around to simplify
 creating vcr cassettes in mocha.
 
 ## Install
 
 ```bash
-npm install --save-dev nock-vcr-recorder-mocha
+npm install --save-dev nock-dvr
 ```
 
 ## Usage
