@@ -1,0 +1,44 @@
+{
+  "name": "nock-dvr",
+  "version": "0.0.1",
+  "description": "A modern network request recording for testing complex Web APIs.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard --fix",
+    "test": "rm -rf cassettes && mocha test/*-test.js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/poetic/nock-vcr-recorder-mocha.git"
+  },
+  "keywords": [
+    "dvr",
+    "vcr",
+    "mocha",
+    "nock",
+    "testing",
+    "fixtures",
+    "mocking"
+  ],
+  "author": "Jake Craige <jake@poeticsystems.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/poetic/nock-vcr-recorder-mocha/issues"
+  },
+  "homepage": "https://github.com/poetic/nock-vcr-recorder-mocha",
+  "dependencies": {
+    "nock-vcr-recorder": "^0.1.5",
+    "slug": "^0.9.4"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "mocha": "^6.2.0",
+    "request": "^2.88.0",
+    "standard": "^14.0.0"
+  },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
+  }
+}
