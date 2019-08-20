@@ -53,9 +53,7 @@ function requested (url, callback) {
 }
 
 function getApp () {
-  const express = require('express')
-
-  const app = express()
+  const app = require('express')()
 
   app.get('/test', function (req, res) {
     res.send('ok')
