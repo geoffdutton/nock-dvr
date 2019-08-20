@@ -3,13 +3,13 @@
  * which shows agnostic behavior
  */
 const assert = require('assert')
-const app = require('./app')
 const dvr = require('../')
 const slug = require('slug')
 const {
   assertEpisode,
   assertNotEpisode,
   deleteEpisode,
+  getApp,
   requested
 } = require('./helpers')
 
@@ -24,7 +24,7 @@ describe('it', function () {
 
   before(function (done) {
     episodes.forEach(ep => deleteEpisode(ep))
-    server = app.listen(4006, done)
+    server = getApp().listen(4006, done)
   })
 
   dvr.it('slugifies a cassette - callback', done => {

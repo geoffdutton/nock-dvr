@@ -10,8 +10,8 @@
     "clean": "rm -rf cassettes",
     "lint": "standard --fix",
     "test": "npm run lint && npm run clean && npm run test:mocha",
-    "test:mocha": "nyc mocha -r test/*",
-    "coverage": "nyc report --reporter=text-lcov | codecov"
+    "test:mocha": "nyc --reporter=lcov --reporter=text mocha test/*",
+    "coverage": "codecov"
   },
   "repository": {
     "type": "git",

@@ -1,17 +1,19 @@
 
 const assert = require('assert')
-const app = require('./app')
 const dvr = require('../')
 const slug = require('slug')
 const {
   assertEpisode,
   assertNotEpisode,
+  getApp,
   requested
 } = require('./helpers')
 
 dvr.describe('describe', function () {
+  let server
+
   before(function (done) {
-    this.server = app.listen(4007, done)
+    server = getApp().listen(4007, done)
   })
 
   it('slugifies a cassette - callback', function (done) {
@@ -30,6 +32,6 @@ dvr.describe('describe', function () {
     assertEpisode('describe/' + slug('slugifies a cassette - promise'))
     assertEpisode('describe/' + slug('slugifies a cassette - callback'))
     assertNotEpisode(slug('describe/doesnt save with no requests'))
-    this.server.close(done)
+    server.close(done)
   })
 })

@@ -1,11 +1,11 @@
 
 const nock = require('nock')
-const app = require('./app')
 const dvr = require('../lib/dvr')
 const assert = require('assert').strict
 const {
   assertNotEpisode,
   assertEpisode,
+  getApp,
   watchEpisode,
   mockRecording,
   requested
@@ -52,7 +52,7 @@ describe('dvr.record', function () {
 
       mockRecording('plays back request')
 
-      app.get('/shouldnt-be-called', function (req, res) {
+      const app = getApp().get('/shouldnt-be-called', function (req, res) {
         called++
         res.send('ok')
       })
@@ -72,7 +72,7 @@ describe('dvr.record', function () {
 
   describe('requests - recording', function () {
     before(function (done) {
-      servers.push(app.listen(4006, done))
+      servers.push(getApp().listen(4006, done))
     })
 
     it('saves a cassette with the server response', function () {

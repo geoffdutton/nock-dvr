@@ -52,10 +52,23 @@ function requested (url, callback) {
   req(url, callback)
 }
 
+function getApp () {
+  const express = require('express')
+
+  const app = express()
+
+  app.get('/test', function (req, res) {
+    res.send('ok')
+  })
+
+  return app
+}
+
 module.exports = {
-  deleteEpisode,
   assertEpisode,
   assertNotEpisode,
+  deleteEpisode,
+  getApp,
   mockRecording,
   watchEpisode,
   requested
