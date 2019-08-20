@@ -1,27 +1,26 @@
 
 const assert = require('assert')
-const request = require('request')
 const app = require('./app')
 const vcr = require('../')
 const slug = require('slug')
 const {
   assertCassette,
-  assertNotCassette
+  assertNotCassette,
+  requested
 } = require('./helpers')
 
 describe('it', function () {
+  const testUrl = 'http://localhost:4006/test'
   before(function (done) {
     this.server = app.listen(4006, done)
   })
 
   vcr.it('slugifies a cassette - callback', function (done) {
-    request('http://localhost:4006/test', done)
+    requested(testUrl, done)
   })
 
   vcr.it('slugifies a cassette - Promise', function () {
-    return new Promise((resolve, reject) => {
-      request('http://localhost:4006/test', (err, res) => err ? reject(err) : resolve(res))
-    })
+    return requested(testUrl)
   })
 
   it('doesnt save with no requests', function () {

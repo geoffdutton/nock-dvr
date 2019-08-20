@@ -1,34 +1,18 @@
 'use strict'
 
 const assert = require('assert')
-const request = require('request')
-const vcr = require('../')
-const realVcr = require('nock-vcr-recorder')
+const dvr = require('../')
 const slug = require('slug')
 const {
+  requested,
   readCassette
 } = require('./helpers')
 
-describe('config', function () {
-  it('changes realVcr\'s default config', function () {
-    assert.strictEqual(realVcr._config.cassetteLibraryDir, 'cassettes')
-
-    vcr.config({ cassetteLibraryDir: 'fixtures' })
-
-    assert.strictEqual(realVcr._config.cassetteLibraryDir, 'fixtures')
-  })
-
-  after(function () {
-    // Reset to not affect other tests
-    vcr.config({ cassetteLibraryDir: 'cassettes' })
-  })
-})
-
-vcr.describe('config - describe', {
+dvr.describe('config - describe', {
   excludeScope: ['github.com']
 }, function () {
   it('excludes github', function (done) {
-    request('https://github.com/poetic.json', done)
+    requested('https://github.com/poetic.json', done)
   })
 
   after(function () {
@@ -39,10 +23,10 @@ vcr.describe('config - describe', {
 })
 
 describe('config - it', function () {
-  vcr.it('excludes github', {
+  dvr.it('excludes github', {
     excludeScope: ['github.com']
   }, function (done) {
-    request('https://github.com/poetic.json', done)
+    requested('https://github.com/poetic.json', done)
   })
 
   after(function () {

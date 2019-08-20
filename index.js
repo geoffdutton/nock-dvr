@@ -1,10 +1,10 @@
 
-const vcr = require('nock-vcr-recorder')
+const dvr = require('./lib/dvr')
 const describe = require('./lib/describe')
 const it = require('./lib/it')
 
 module.exports = {
   describe,
   it,
-  config: vcr.config.bind(vcr)
+  config: dvr.config.bind(dvr)
 }
