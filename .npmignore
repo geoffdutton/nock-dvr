@@ -1,2 +1,5 @@
+.idea
 test
 cassettes
+coverage
+.nyc_output
