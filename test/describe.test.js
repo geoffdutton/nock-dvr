@@ -4,8 +4,8 @@ const app = require('./app')
 const dvr = require('../')
 const slug = require('slug')
 const {
-  assertCassette,
-  assertNotCassette,
+  assertEpisode,
+  assertNotEpisode,
   requested
 } = require('./helpers')
 
@@ -27,9 +27,9 @@ dvr.describe('describe', function () {
   })
 
   after(function (done) {
-    assertCassette('describe/' + slug('slugifies a cassette - promise'))
-    assertCassette('describe/' + slug('slugifies a cassette - callback'))
-    assertNotCassette(slug('describe/doesnt save with no requests'))
+    assertEpisode('describe/' + slug('slugifies a cassette - promise'))
+    assertEpisode('describe/' + slug('slugifies a cassette - callback'))
+    assertNotEpisode(slug('describe/doesnt save with no requests'))
     this.server.close(done)
   })
 })

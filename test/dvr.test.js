@@ -25,7 +25,7 @@ describe('dvr - config', function () {
     })
   })
 
-  it('cassette specific config doesn\'t modify global default', function () {
+  it('dvr specific config doesn\'t modify global default', function () {
     return dvr.record('test config', {
       excludeScope: ['github.com']
     }, function () {

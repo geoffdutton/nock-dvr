@@ -1,36 +1,49 @@
-
+/**
+ * Test file for Mocha or [Jest** in time] showing the combined
+ * which shows agnostic behavior
+ */
 const assert = require('assert')
 const app = require('./app')
-const vcr = require('../')
+const dvr = require('../')
 const slug = require('slug')
 const {
-  assertCassette,
-  assertNotCassette,
+  assertEpisode,
+  assertNotEpisode,
+  deleteEpisode,
   requested
 } = require('./helpers')
 
 describe('it', function () {
+  let server
   const testUrl = 'http://localhost:4006/test'
+
+  const episodes = [
+    'it/' + slug('slugifies a cassette - callback'),
+    'it/' + slug('slugifies a cassette - promise')
+  ]
+
   before(function (done) {
-    this.server = app.listen(4006, done)
+    episodes.forEach(ep => deleteEpisode(ep))
+    server = app.listen(4006, done)
   })
 
-  vcr.it('slugifies a cassette - callback', function (done) {
+  dvr.it('slugifies a cassette - callback', done => {
     requested(testUrl, done)
   })
 
-  vcr.it('slugifies a cassette - Promise', function () {
+  dvr.it('slugifies a cassette - Promise', () => {
     return requested(testUrl)
   })
 
-  it('doesnt save with no requests', function () {
+  dvr.it('doesnt save with no requests', function () {
     assert.ok(true)
   })
 
-  after(function (done) {
-    assertCassette('it/' + slug('slugifies a cassette - callback'))
-    assertCassette('it/' + slug('slugifies a cassette - promise'))
-    assertNotCassette(slug('it/doesnt save with no requests'))
-    this.server.close(done)
+  after(done => {
+    console.log('before after')
+    episodes.forEach(ep => assertEpisode(ep))
+    assertNotEpisode(slug('it/doesnt save with no requests'))
+
+    server.close(done)
   })
 })

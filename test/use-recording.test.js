@@ -4,10 +4,10 @@ const app = require('./app')
 const dvr = require('../lib/dvr')
 const assert = require('assert').strict
 const {
-  assertNotCassette,
-  assertCassette,
-  readCassette,
-  mockRecordedCassette,
+  assertNotEpisode,
+  assertEpisode,
+  watchEpisode,
+  mockRecording,
   requested
 } = require('./helpers')
 
@@ -50,7 +50,7 @@ describe('dvr.record', function () {
     before(function (done) {
       called = 0
 
-      mockRecordedCassette('plays back request')
+      mockRecording('plays back request')
 
       app.get('/shouldnt-be-called', function (req, res) {
         called++
@@ -79,7 +79,7 @@ describe('dvr.record', function () {
       return dvr.record('real request', function () {
         return request('http://localhost:4006/test')
       }).then(function () {
-        assertCassette('real request')
+        assertEpisode('real request')
       })
     })
 
@@ -87,13 +87,13 @@ describe('dvr.record', function () {
       return dvr.record('no file with no request', function () {
         return assert(true)
       }).then(function () {
-        assertNotCassette('no file with no request')
+        assertNotEpisode('no file with no request')
       })
     })
 
     describe('makes sure nock is active', function () {
       beforeEach(function () {
-        mockRecordedCassette('re-activates nock')
+        mockRecording('re-activates nock')
         nock.restore()
       })
 
@@ -114,7 +114,7 @@ describe('dvr.record', function () {
       }, function () {
         return request('https://github.com/poetic.json')
       }).then(function () {
-        const cassette = readCassette('excludeScope array')
+        const cassette = watchEpisode('excludeScope array')
 
         assert.equal(cassette.length, 0)
       })
@@ -126,7 +126,7 @@ describe('dvr.record', function () {
       }, function () {
         return request('https://github.com/poetic.json')
       }).then(function () {
-        const cassette = readCassette('excludeScope string')
+        const cassette = watchEpisode('excludeScope string')
 
         assert.equal(cassette.length, 0)
       })
@@ -135,7 +135,7 @@ describe('dvr.record', function () {
     describe('all mode', function () {
       before(function () {
         dvr.config({ excludeScope: [] })
-        mockRecordedCassette('overwrites existing cassette')
+        mockRecording('overwrites existing cassette')
       })
 
       it('overwrites existing cassette', function () {
@@ -144,7 +144,7 @@ describe('dvr.record', function () {
         }, function () {
           return request('http://localhost:4006/test')
         }).then(function () {
-          const cassette = readCassette('overwrites existing cassette')
+          const cassette = watchEpisode('overwrites existing cassette')
 
           assert.equal(cassette.length, 1, '0 !== 1 : recorded one request')
           assert.equal(cassette[0].response, 'ok')
@@ -161,7 +161,7 @@ describe('dvr.record', function () {
             return Promise.reject(new Error('mock failed test'))
           })
         }).then(null, function () {
-          assertNotCassette('doesnt save when test fails')
+          assertNotEpisode('doesnt save when test fails')
         })
       })
 
@@ -173,7 +173,7 @@ describe('dvr.record', function () {
             return Promise.reject(new Error('mock failed test'))
           })
         }).then(null, function () {
-          assertCassette('saves when test fails')
+          assertEpisode('saves when test fails')
         })
       })
     })

@@ -5,7 +5,7 @@ const dvr = require('../')
 const slug = require('slug')
 const {
   requested,
-  readCassette
+  watchEpisode
 } = require('./helpers')
 
 dvr.describe('config - describe', {
@@ -16,7 +16,7 @@ dvr.describe('config - describe', {
   })
 
   after(function () {
-    const cassette = readCassette(slug('config - describe') + '/' + slug('excludes github'))
+    const cassette = watchEpisode(slug('config - describe') + '/' + slug('excludes github'))
 
     assert.strictEqual(cassette.length, 0)
   })
@@ -30,7 +30,7 @@ describe('config - it', function () {
   })
 
   after(function () {
-    const cassette = readCassette(slug('config - it') + '/' + slug('excludes github'))
+    const cassette = watchEpisode(slug('config - it') + '/' + slug('excludes github'))
 
     assert.strictEqual(cassette.length, 0)
   })

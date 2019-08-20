@@ -7,8 +7,10 @@
     "node": ">=8"
   },
   "scripts": {
+    "clean": "rm -rf cassettes",
     "lint": "standard --fix",
-    "test": "rm -rf cassettes && mocha -r test/*"
+    "test": "npm run lint && npm run clean && npm run test:mocha",
+    "test:mocha": "nyc mocha -r test/*"
   },
   "repository": {
     "type": "git",
@@ -30,8 +32,9 @@
   },
   "homepage": "https://github.com/geoffdutton/nock-dvr",
   "dependencies": {
-    "mkdirp": "^0.5.0",
+    "mkdirp": "^0.5.1",
     "nock": "^10.0.6",
+    "nyc": "^14.1.1",
     "slug": "^1.1.0"
   },
   "devDependencies": {
@@ -41,6 +44,10 @@
     "standard": "^14.0.0"
   },
   "standard": {
+    "globals": [
+      "afterAll",
+      "beforeAll"
+    ],
     "env": {
       "mocha": true
     }
