@@ -10,7 +10,8 @@
     "clean": "rm -rf cassettes",
     "lint": "standard --fix",
     "test": "npm run lint && npm run clean && npm run test:mocha",
-    "test:mocha": "nyc mocha -r test/*"
+    "test:mocha": "nyc mocha -r test/*",
+    "coverage": "nyc report --reporter=text-lcov | codecov"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "slug": "^1.1.0"
   },
   "devDependencies": {
+    "codecov": "^3.5.0",
     "express": "^4.17.1",
     "mocha": "^6.2.0",
     "request": "^2.88.0",
