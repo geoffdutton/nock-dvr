@@ -1,6 +1,6 @@
 {
   "name": "nock-dvr",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A modern network request recording for testing complex Web APIs.",
   "main": "index.js",
   "engines": {
