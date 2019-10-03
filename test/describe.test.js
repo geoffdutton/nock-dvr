@@ -24,13 +24,22 @@ dvr.describe('describe', function () {
     return requested('http://localhost:4007/test')
   })
 
+  it('slugifies a cassette - async', async function () {
+    await requested('http://localhost:4007/test')
+  })
+
   it('doesnt save with no requests', function () {
     assert.ok(true)
   })
 
+  // it('catches failed tests', function () {
+  //   assert(false)
+  // })
+
   after(function (done) {
     assertEpisode('describe/' + slug('slugifies a cassette - promise'))
     assertEpisode('describe/' + slug('slugifies a cassette - callback'))
+    assertEpisode('describe/' + slug('slugifies a cassette - async'))
     assertNotEpisode(slug('describe/doesnt save with no requests'))
     server.close(done)
   })
