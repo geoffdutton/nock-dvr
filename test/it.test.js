@@ -19,7 +19,8 @@ describe('it', function () {
 
   const episodes = [
     'it/' + slug('slugifies a cassette - callback'),
-    'it/' + slug('slugifies a cassette - promise')
+    'it/' + slug('slugifies a cassette - promise'),
+    'it/' + slug('slugifies a cassette - async')
   ]
 
   before(function (done) {
@@ -33,6 +34,10 @@ describe('it', function () {
 
   dvr.it('slugifies a cassette - Promise', () => {
     return requested(testUrl)
+  })
+
+  dvr.it('slugifies a cassette - async', async () => {
+    await requested(testUrl)
   })
 
   dvr.it('doesnt save with no requests', function () {
