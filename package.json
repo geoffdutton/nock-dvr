@@ -41,7 +41,7 @@
   "devDependencies": {
     "codecov": "^3.6.1",
     "express": "^4.17.1",
-    "mocha": "^6.2.1",
+    "mocha": "^7.0.0",
     "request": "^2.88.0",
     "standard": "^14.3.1"
   },
