@@ -3,3 +3,4 @@ test
 cassettes
 coverage
 .nyc_output
+.github

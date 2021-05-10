@@ -4,7 +4,7 @@
   "description": "A modern network request recording for testing complex Web APIs.",
   "main": "index.js",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "scripts": {
     "clean": "rm -rf cassettes",
