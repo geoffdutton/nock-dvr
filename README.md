@@ -1,6 +1,5 @@
 # Nock DVR Recorder
 [![npm](https://img.shields.io/npm/v/nock-dvr)](https://www.npmjs.com/package/nock-dvr)
-[![Build Status](https://travis-ci.com/geoffdutton/nock-dvr.svg?branch=master)](https://travis-ci.com/geoffdutton/nock-dvr)
 [![codecov](https://codecov.io/gh/geoffdutton/nock-dvr/branch/master/graph/badge.svg)](https://codecov.io/gh/geoffdutton/nock-dvr)
 [![Greenkeeper badge](https://badges.greenkeeper.io/geoffdutton/nock-dvr.svg)](https://greenkeeper.io/)
 
