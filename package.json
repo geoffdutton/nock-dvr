@@ -36,7 +36,7 @@
     "mkdirp": "^1.0.4",
     "nock": "^11.3.5",
     "nyc": "^15.1.0",
-    "slug": "^2.0.0"
+    "slug": "^5.1.0"
   },
   "devDependencies": {
     "codecov": "^3.8.2",
