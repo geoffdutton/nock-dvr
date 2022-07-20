@@ -34,7 +34,7 @@
   "homepage": "https://github.com/geoffdutton/nock-dvr",
   "dependencies": {
     "mkdirp": "^1.0.4",
-    "nock": "^11.3.5",
+    "nock": "^13.2.9",
     "nyc": "^15.1.0",
     "slug": "^2.0.0"
   },
